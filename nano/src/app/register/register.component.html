@@ -1,0 +1,40 @@
+<div class="row">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="register()">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input type="string" matInput formControlName="username" placeholder="user666">
+      <mat-error *ngIf="loginForm.hasError('username') && !loginForm.hasError('required')">
+        Please enter a valid username
+      </mat-error>
+      <mat-error *ngIf="loginForm.hasError('required')">
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" placeholder="name@email.com">
+      <mat-error *ngIf="loginForm.hasError('email') && !loginForm.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="loginForm.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" placeholder="***">
+      <mat-error *ngIf="loginForm.hasError('email') && !loginForm.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="loginForm.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button (submit)="register()" mat-raised-button>Register</button>
+    <button>
+      <a [routerLink]="['/login']" mat-raised-button>Login</a>
+    </button>
+  </form>
+</div>
+
+
