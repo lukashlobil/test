@@ -14,6 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "strict": true,
     "paths": {
       "@nano/api": ["api/src/index.ts"],
       "@nano/models": ["models/src/index.ts"]

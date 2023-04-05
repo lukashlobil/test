@@ -6,7 +6,7 @@ import {ListUsersComponent} from './list-users/list-users.component';
 export const appRoutes: Route[] = [
     {
         path: '',
-        redirectTo: 'list-users',
+        redirectTo: 'register',
         pathMatch: 'full'
     },
     {
