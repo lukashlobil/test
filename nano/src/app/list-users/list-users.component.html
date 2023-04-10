@@ -6,41 +6,23 @@
 
 
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-<table mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-    <mat-cell *matCellDef="let user">{{user.id}}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="firstName">
-    <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
-    <mat-cell class="description-cell"
-              *matCellDef="let user">{{user.first_name}}</mat-cell>
-
-  </ng-container>
-
-  <ng-container matColumnDef="lastName">
-    <mat-header-cell *matHeaderCellDef>Last name</mat-header-cell>
-    <mat-cell class="duration-cell"
-              *matCellDef="let user">{{user.last_name}}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-    <mat-cell class="duration-cell"
-              *matCellDef="let user">{{user.email}}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="avatar">
-    <mat-header-cell *matHeaderCellDef>Avatar</mat-header-cell>
-    <mat-cell class="duration-cell"
-              *matCellDef="let user"><img [src] =user.avatar></mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</table>
-
+<div>
+  <table>
+    <thead>
+    <th>Name</th>
+    <th>Last name</th>
+    <th>email</th>
+    <th>avatar</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of data?.data" (click)="detail(user.id)">
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.email}}</td>
+      <td><img [src]="user.avatar"></td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
 
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

@@ -8,6 +8,18 @@ export interface User {
     avatar: string;
 }
 
+export interface UserDetail {
+    color: string;
+    id: number;
+    name: string;
+    pantone_value: string;
+    year: 2000;
+}
+
+export interface UserResponse {
+    data: UserDetail
+}
+
 export interface PaginationResponse {
     page: number;
     total: number;

@@ -3,6 +3,7 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {ListUsersComponent} from './list-users/list-users.component';
 import {AuthGuardService} from '../../api/src/lib/auth.guard';
+import {UserDetailComponent} from './user-detail/user-detail.component';
 
 export const appRoutes: Route[] = [
     {
@@ -25,6 +26,12 @@ export const appRoutes: Route[] = [
     },
     {
         path: 'list-users/{id}',
-        component: ListUsersComponent
+        component: ListUsersComponent,
+        canActivate: [AuthGuardService],
+    },
+    {
+        path: 'user/:id',
+        component: UserDetailComponent,
+        canActivate: [AuthGuardService],
     }
 ];

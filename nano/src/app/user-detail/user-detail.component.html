@@ -1,0 +1,10 @@
+<mat-card>
+ <a routerLink="/list-users"><mat-icon>arrow_back</mat-icon></a>
+ <div [style.background-color]="(user$ | async)?.color">
+  <p>Name: {{(user$ | async)?.name}}</p>
+  <p>Pantone value: {{(user$ | async)?.pantone_value}}</p>
+  <p>Year: {{(user$ | async)?.year}}</p>
+  <p>Id: {{(user$ | async)?.id}}</p>
+ </div>
+
+</mat-card>

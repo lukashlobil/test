@@ -1,7 +1,7 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import {ListUsersParams, PaginationResponse, User} from '../../../models/src/lib/users';
+import {map, Observable} from 'rxjs';
+import {ListUsersParams, PaginationResponse, User, UserDetail, UserResponse} from '../../../models/src/lib/users';
 
 @Injectable({providedIn: 'root'})
 export class UsersClient {
@@ -11,12 +11,8 @@ export class UsersClient {
     this.serviceUrl = `https://reqres.in/api`;
   }
 
-  public listUsers(userParams?: ListUsersParams): Observable<any> {
+  public listUsers(userParams?: ListUsersParams): Observable<PaginationResponse> {
     let params = new HttpParams();
-/*    for (let paramsKey in userParams) {
-      params.append(paramsKey.toString(), userParams[paramsKey]);
-    }*/
-    console.log(userParams)
     if (userParams) {
       if (userParams.page) params = params.append('page', userParams.page);
       if (userParams.per_page) params = params.append('per_page', userParams.per_page);
@@ -25,10 +21,10 @@ export class UsersClient {
     return this.http.get<PaginationResponse>(`${ this.serviceUrl }/users`, {params});
   }
 
-/*
-  public getSingleUser(): Observable<User>
-  return this.http.get<User>(`${ this.serviceUrl }/`)
+
+
+  public getUser(id: number): Observable<UserDetail> {
+  return this.http.get<UserResponse>(`${ this.serviceUrl }/user/${id}`).pipe(map(response => response.data))
   }
-*/
 
 }

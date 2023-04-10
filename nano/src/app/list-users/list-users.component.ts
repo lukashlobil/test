@@ -4,7 +4,8 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {UsersClient} from '../../../api/src/lib/users.service';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ListUsersParams, PaginationFormModel} from '../../../models/src/lib/users';
+import {ListUsersParams, PaginationFormModel, PaginationResponse} from '../../../models/src/lib/users';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'nano-list-users',
@@ -22,10 +23,11 @@ export class ListUsersComponent implements OnInit {
     })
 
     dataSource = new MatTableDataSource();
-
+    data: PaginationResponse | null = null;
     displayedColumns = ['firstName', 'lastName', 'email', 'avatar'];
 
-    constructor(private usersClient: UsersClient) {
+    constructor(private usersClient: UsersClient,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -39,10 +41,15 @@ export class ListUsersComponent implements OnInit {
     getData(params?: ListUsersParams) {
         this.usersClient.listUsers(params).subscribe(
             res => {
+                this.data = res;
                 this.dataSource = new MatTableDataSource<any>(res.data);
                 this.dataSource.paginator = this.firstPaginator;
             }
         )
+    }
+
+    detail(id: number) {
+        this.router.navigate(['/user', id])
     }
 
 }
