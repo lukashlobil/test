@@ -5,6 +5,11 @@
   <p>Pantone value: {{(user$ | async)?.pantone_value}}</p>
   <p>Year: {{(user$ | async)?.year}}</p>
   <p>Id: {{(user$ | async)?.id}}</p>
+<h1>User from list:</h1>
+  <p>Name: {{userFromList.first_name}} {{userFromList.last_name}}</p>
+  <p>Avatar: <img [src]="userFromList.avatar"></p>
+  <p>Email: {{userFromList.email}}</p>
+  <p>Id: {{userFromList.id}}</p>
  </div>
 
 </mat-card>

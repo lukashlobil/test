@@ -4,7 +4,7 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {UsersClient} from '../../../api/src/lib/users.service';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ListUsersParams, PaginationFormModel, PaginationResponse} from '../../../models/src/lib/users';
+import {ListUsersParams, PaginationFormModel, PaginationResponse, User} from '../../../models/src/lib/users';
 import {Router} from '@angular/router';
 
 @Component({
@@ -48,8 +48,8 @@ export class ListUsersComponent implements OnInit {
         )
     }
 
-    detail(id: number) {
-        this.router.navigate(['/user', id])
+    detail(user: User) {
+        this.router.navigate(['/user', user.id], {state: user})
     }
 
 }
