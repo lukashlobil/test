@@ -15,8 +15,8 @@ import {Router} from '@angular/router';
     styleUrls: ['./list-users.component.scss'],
 })
 export class ListUsersComponent implements OnInit {
-    @ViewChild('firstPaginator') firstPaginator!: MatPaginator;
-    @ViewChild('secondPaginator') secondPaginator!: MatPaginator;
+    @ViewChild(MatPaginator) firstPaginator!: MatPaginator;
+    // @ViewChild('secondPaginator') secondPaginator!: MatPaginator;
     paginationForm = new FormGroup<PaginationFormModel>({
         page: new FormControl(1, {nonNullable: true}),
         per_page: new FormControl(10, {nonNullable: true})

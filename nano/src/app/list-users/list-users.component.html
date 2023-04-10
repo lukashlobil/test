@@ -1,9 +1,7 @@
 <form [formGroup]="paginationForm">
-  <input formControlName="page">
-  <input formControlName="per_page">
+  Page: <input formControlName="page">
+  Per page: <input formControlName="per_page">
 </form>
-
-
 
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 <div>
@@ -44,5 +42,3 @@
 
   </table>
   </div>
-
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
